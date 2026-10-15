@@ -1,0 +1,21 @@
+# Environment and credentials
+.env
+.env.*
+*.env
+!.env.example
+*.pem
+*.key
+*.cert
+secrets.*
+
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
