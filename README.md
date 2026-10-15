@@ -99,6 +99,43 @@ An AI-powered interview preparation platform designed to help candidates prepare
 
 ---
 
+## 🚀 Deployment Guide
+
+### Part 1: Deploy Backend on Render
+
+1. Go to [Render Dashboard](https://dashboard.render.com/) and click **New +** > **Web Service**.
+2. Connect your GitHub repository: `HirePrep-AI`.
+3. Configure the service settings:
+   - **Name**: `hireprep-ai-backend` (or your choice)
+   - **Root Directory**: `backend`
+   - **Environment**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start` (or `node server.js`)
+4. In **Environment Variables**, add:
+   - `MONGO_URI`: *Your MongoDB connection string*
+   - `JWT_SECRET`: *Your secure secret key*
+   - `GOOGLE_GENAI_API_KEY`: *Your Gemini API key*
+   - `NODE_ENV`: `production`
+   - `FRONTEND_URL`: *Your Vercel app URL (e.g. `https://hireprep-ai.vercel.app`)*
+5. Click **Deploy Web Service** and copy your backend URL (e.g. `https://hireprep-ai-backend.onrender.com`).
+
+---
+
+### Part 2: Deploy Frontend on Vercel
+
+1. Go to [Vercel Dashboard](https://vercel.com/) and click **Add New...** > **Project**.
+2. Import the `HirePrep-AI` repository.
+3. In **Project Configuration**:
+   - **Root Directory**: Click *Edit* and select `frontend`.
+   - **Framework Preset**: `Vite`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+4. In **Environment Variables**, add:
+   - `VITE_API_BASE_URL`: Your Render backend URL (e.g. `https://hireprep-ai-backend.onrender.com` without trailing slash).
+5. Click **Deploy**.
+
+---
+
 ## 🔒 Security & Credentials
 
 All sensitive credentials and environment files (`.env`, `*.key`, etc.) and heavy dependencies (`node_modules/`, `dist/`) are safely excluded via `.gitignore` to prevent secret leaks.
